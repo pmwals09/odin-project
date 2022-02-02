@@ -1,0 +1,25 @@
+body > * {
+  width: 600px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.hero-banner {
+  display: flex;
+}
+
+.hero-image {
+  width: 200px;
+  height: 150px;
+  background-color: gray;
+}
