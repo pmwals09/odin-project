@@ -1,3 +1,39 @@
+const buttons = document.querySelectorAll("button");
+const playerScore = document.querySelector("#player");
+const computerScore = document.querySelector("#computer");
+const messageP = document.querySelector(".message");
+const score = {
+  player: 0,
+  computer: 0,
+};
+buttons.forEach((button) => {
+  button.addEventListener("click", handleClick);
+});
+
+function handleClick(e) {
+  if (Object.values(score).includes(5)) return;
+  const playerSelection = e.target.innerText;
+  const computerSelection = computerPlay();
+  const message = playRound({
+    playerSelection,
+    computerSelection,
+  });
+  playerResult = message.split(" ")[1];
+  if (playerResult === "Win!") {
+    score.player++;
+  } else if (playerResult === "Lose!") {
+    score.computer++;
+  }
+  if (Object.values(score).includes(5)) {
+    const winner = Object.keys(score).find((ea) => score[ea] === 5);
+    messageP.innerText = `${winner[0].toUpperCase() + winner.slice(1)} wins!`;
+  } else {
+    messageP.innerText = message;
+  }
+  playerScore.innerText = `Player: ${score.player}`;
+  computerScore.innerText = `Computer: ${score.computer}`;
+}
+
 const options = ["Paper", "Scissors", "Rock"];
 
 function computerPlay() {
@@ -13,7 +49,9 @@ function playRound({ playerSelection, computerSelection }) {
   const computerIndex = options.findIndex((ea) => ea === computerSelection);
 
   let result;
-  if (
+  if (computerIndex === 0 && playerIndex === 2) {
+    result = "Lose";
+  } else if (
     (playerIndex === 0 && computerIndex === 2) ||
     playerIndex > computerIndex
   ) {
@@ -30,7 +68,6 @@ function playRound({ playerSelection, computerSelection }) {
     result,
   })}`;
 
-  console.log(message);
   return message;
 }
 
@@ -79,5 +116,3 @@ function game() {
     } the match!`
   );
 }
-
-game();
