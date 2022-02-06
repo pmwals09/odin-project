@@ -1,0 +1,46 @@
+.calculator {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.display {
+  text-align: right;
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+.body {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.operators {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+}
+
+.numbers,
+.accessories {
+  display: flex;
+}
+
+.numbers {
+  flex-wrap: wrap;
+}
+
+.number,
+.accessory {
+  width: 33%;
+}
+
+.two-wide {
+  width: 66%;
+}
